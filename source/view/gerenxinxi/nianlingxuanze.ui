@@ -1,0 +1,21 @@
+{
+	"RootView":{
+		"bgColor":"00000055",
+		"width":"750",
+		"id":"ALayout_nianling",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"bgColor":"808080FF",
+				"width":"750",
+				"y":"1034",
+				"index":"0",
+				"fontSize":"48",
+				"id":"do_Picker_nianling",
+				"type":"do_Picker",
+				"height":"300"
+			}
+		],
+		"height":"1334"
+	}
+}

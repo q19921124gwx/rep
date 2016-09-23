@@ -1,0 +1,23 @@
+{
+	"RootView":{
+		"border":"3EC4F0FF,2,[0,0,0,0]",
+		"width":"110",
+		"id":"layout",
+		"tag":"京",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"border":"00000000,0,[0,0,0,0]",
+				"x":"10",
+				"width":"90",
+				"y":"10",
+				"fontSize":"45",
+				"id":"label",
+				"type":"do_Label",
+				"fontColor":"3EC4F0FF",
+				"height":"90"
+			}
+		],
+		"height":"110"
+	}
+}

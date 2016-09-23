@@ -1,0 +1,31 @@
+{
+	"RootView":{
+		"bgColor":"00000055",
+		"width":"750",
+		"id":"ALayout_touxaing",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"bgColor":"FFFFFFFF",
+				"width":"750",
+				"y":"1134",
+				"fontSize":"42",
+				"id":"do_Button_xiangji",
+				"text":"相机",
+				"type":"do_Button",
+				"radius":"20"
+			},
+			{
+				"bgColor":"FFFFFFFF",
+				"width":"750",
+				"y":"1234",
+				"fontSize":"42",
+				"id":"do_Button_xiangce",
+				"text":"相册选择",
+				"type":"do_Button",
+				"radius":"20"
+			}
+		],
+		"height":"1334"
+	}
+}
