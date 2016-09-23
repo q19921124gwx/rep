@@ -21,6 +21,9 @@ var state;
 var md5 = require("md5");
 var verify = require("verify");
 //var id;
+
+
+
 buttonPass.on("touch",function(){
 	if(global.getMemory("state") == "3") {
 		app.closePage("0");
