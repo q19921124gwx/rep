@@ -35,8 +35,8 @@ do_Page.on("result",function() {
 		ui("portrait").source = config.ip + "/" + do_Global.getMemory("userInfo").portrait;
 		do_Global.setMemory("portraitChanged",false);
 	}
-});
-
+});  
+      
 
 
 do_Page.on("newUser",function() {
