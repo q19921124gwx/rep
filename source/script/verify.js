@@ -7,6 +7,7 @@ var reg = {
 	tel : /^(\+86)?1\d{10}$/,
 	pswd : /^.{6,12}$/
 };
+
 module.exports.verify = function(checkedArr) {
 	var flag = true;
 	for(var i = 0;i < checkedArr.length;i++) {
