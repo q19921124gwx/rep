@@ -37,6 +37,8 @@ do_Page.on("result",function() {
 	}
 });
 
+
+
 do_Page.on("newUser",function() {
 //	ui("portrait").source = "";
 	userInfo = do_Global.getMemory("userInfo");
