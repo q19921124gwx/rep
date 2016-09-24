@@ -1,4 +1,0 @@
-/**
- * New DeviceOne File
- */
-gggggggf   
