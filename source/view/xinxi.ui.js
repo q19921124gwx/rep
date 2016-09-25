@@ -56,6 +56,7 @@ do_ALayout_yc.on("touch", function(){
 //监听android 的返回按钮;
 do_Page.on("back", function() {
 	do_ALayout_root.visible = false;
+	do_Page.fire("xinxiNotVisible");
 });
 
 //头像修改

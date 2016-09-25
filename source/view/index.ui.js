@@ -26,7 +26,7 @@ var do_ALayout_LB = ui("do_ALayout_LB");
 var state;
 //引入自定义的js库
 var index_js = require("index_js");
-
+var xinxiFlag;
 //自定义变量
 var DYCDingwei = true;
 var iddingwei;//对定位的坐标进行标记的变量
@@ -141,20 +141,23 @@ do_ALayout_LB.on("touch", function() {
 //当前页面下，订阅Android系统返回键的事件：3秒内连续点击两次退出应用
 var canBack = false;
 var delay3 =mm("do_Timer");
-delay3.delay = 30000;
+delay3.delay = 3000;
 delay3.on("tick", function() {
 	delay3.stop();
 	canBack = false;
 });
 
 do_Page.on("back", function() {
-	if(canBack){
-		do_Global.exit();
-	} else{
-		nf.toast("再次点击退出应用");
-		canBack = true;
-		delay3.start();
+	if(!xinxiFlag) {
+		if(canBack){
+			do_Global.exit();
+		} else{
+			nf.toast("再次点击退出应用");
+			canBack = true;
+			delay3.start();
+		  }
 	}
+	xinxiFlag = false;
 });
 
 //点击标记触发该事件
@@ -199,6 +202,7 @@ do_Page.on("loaded",function() {
 });
 
 do_ALayout_gerenxinxi.on("touch", function() {
+	xinxiFlag = true;
 	if(state == "1") {
 		XinXiLe.show("slide_l2r", 300);
 	}

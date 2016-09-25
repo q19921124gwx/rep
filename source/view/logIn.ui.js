@@ -20,6 +20,7 @@ var config = require("config");
 var state;
 var md5 = require("md5");
 var verify = require("verify");
+var xinxiFlag;
 //var id;
 
 
@@ -142,5 +143,6 @@ page.on("back", function() {
 		delay3.start();
 	}
 });
+
 
 

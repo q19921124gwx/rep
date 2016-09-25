@@ -12,47 +12,48 @@
 				"type":"do_ALayout",
 				"views":[
 					{
-						"textAlign":"center",
-						"width":"400",
-						"x":"156",
-						"fontSize":"45",
-						"id":"carLabel",
-						"type":"do_Label",
-						"fontStyle":"bold_italic",
-						"fontColor":"3EC4F0FF",
-						"height":"88"
-					},
-					{
-						"width":"700",
-						"y":"88",
+						"width":"300",
+						"x":"400",
 						"id":"layoutDelete",
 						"type":"do_ALayout",
 						"views":[
 							{
 								"textAlign":"center",
-								"width":"700",
-								"y":"1",
+								"width":"300",
 								"fontSize":"32",
 								"id":"labelDelete",
 								"text":"删除",
 								"type":"do_Label",
 								"fontStyle":"bold_italic",
-								"fontColor":"000000FF"
-							},
-							{
-								"bgColor":"000000FF",
-								"width":"700",
-								"id":"do_ALayout_1",
-								"type":"do_ALayout",
-								"height":"1"
+								"fontColor":"000000FF",
+								"height":"88"
 							}
 						],
-						"height":"81"
+						"height":"88"
 					}
 				],
-				"height":"168"
+				"height":"88"
+			},
+			{
+				"textAlign":"center",
+				"width":"399",
+				"x":"25",
+				"fontSize":"45",
+				"id":"carLabel",
+				"type":"do_Label",
+				"fontStyle":"bold_italic",
+				"fontColor":"3EC4F0FF",
+				"height":"88"
+			},
+			{
+				"bgColor":"000000FF",
+				"x":"424",
+				"width":"1",
+				"id":"do_ALayout_2",
+				"type":"do_ALayout",
+				"height":"88"
 			}
 		],
-		"height":"200"
+		"height":"110"
 	}
 }
