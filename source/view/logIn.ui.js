@@ -55,7 +55,7 @@ logButton.on("touch",function() {
 	var pswd = passWordTf.text.trim();
 	var cell = [
 	    [userName,"用户名不能为空:用户名不符合要求","tel"],
-	    [pswd,"密码不能为空:密码只能由字母和数字组成"]
+	    [pswd,"密码不能为空:密码长度只能为6到12位","pswd"]
 	];
 	if(verify.verify(cell)) {
 		passWord = md5.hex_md5(passWordTf.text.toString());

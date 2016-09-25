@@ -20,9 +20,6 @@ do_Label_TCCname2.text = do_Global.getMemory("text");
 
 //返回按钮的返回事件
 
-do_Page.on("back", function() { // 监听android 的返回按钮;
-	do_App.closePage();
-});
 
 //导航按钮事件
 do_Button_daohang.on("touch", function() {
