@@ -10,6 +10,9 @@ var do_Page =sm("do_Page");
 var do_BaiduLocation=sm("do_BaiduLocation");
 var do_BaiduNavigate = sm("do_BaiduNavigate");
 
+
+
+
 //声明UI组件
 var do_BaiduMapView_1 = ui("do_BaiduMapView_1");
 var do_ALayout_dingwei = ui("do_ALayout_dingwei");
