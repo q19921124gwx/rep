@@ -25,6 +25,10 @@ var xinxiFlag;
 
 
 
+
+
+
+
 buttonPass.on("touch",function(){
 	if(global.getMemory("state") == "3") {
 		app.closePage("0");
