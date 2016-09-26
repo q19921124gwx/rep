@@ -9,5 +9,10 @@ app.on("loaded", function () {
     this.openPage({
     	source : "source://view/logIn.ui"
     	}
+    
+    
+    
+    
+    
     );
 });
