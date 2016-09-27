@@ -1,6 +1,6 @@
 var nf = sm("do_Notification");
 var do_Global =sm("do_Global");
-var do_Page =sm("do_Page");
+var page =sm("do_Page");
 var sex0;
 var age0;
 var phoneNumLabel = ui("phoneNumLabel");
@@ -110,6 +110,7 @@ function changPortrait(portraitSource) {
 	 http2.form(data);
 	global.setMemory("portraitChangedFlag",true);
 	http2.on("success",function(data) {
+		nf.alert(data);
 		if(data != null && data.SUCCESS != null) {
 			if(data.SUCCESS == "000") {
 				global.setMemory("portraitChanged",true);
@@ -134,7 +135,7 @@ function webError() {
 	nf.toast("网络故障，请稍后重试");
 };
 
-do_Page.on("loaded",function() {
+page.on("loaded",function() {
 	//页面载入时，先获取从登录页面获取的存储用户表信息json串，
 	//并将数组中的各个属性显示在用户客户端app的界面上
 	info = global.getMemory("userInfo");
@@ -161,13 +162,13 @@ var nianlingxuanze = ui("nianlingxuanze");
 //选择性别
 sexLayout.on("touch", function(data, e) {
 	xingbiexuanze.show("fade", 200);
-	do_Page.hideKeyboard();
+	page.hideKeyboard();
 });
 
 //选择年龄
 ageLayout.on("touch", function(data, e) {
 	nianlingxuanze.show("fade", 200);
-	do_Page.hideKeyboard();
+	page.hideKeyboard();
 });
 
 
@@ -175,17 +176,17 @@ ageLayout.on("touch", function(data, e) {
 //头像上传
 portraitLayout.on("touch", function(data, e) {
 	touxiangshangchuan.show("fade", 200);
-	do_Page.hideKeyboard();
+	page.hideKeyboard();
 });
 
 //在当前页面下订阅TypeChanged自定义消息
-do_Page.on("TypeChanged", function(data){
+page.on("TypeChanged", function(data){
 	sexLabel.text=data;
 });
-do_Page.on("nianling", function(data){
+page.on("nianling", function(data){
 	ageLabel.text=data;
 });
-do_Page.on("touxiang", function(data){
+page.on("touxiang", function(data){
 	changPortrait(data);
 });
 

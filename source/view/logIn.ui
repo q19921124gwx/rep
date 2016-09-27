@@ -11,7 +11,7 @@
 				"y":"453",
 				"fontSize":"30",
 				"id":"userNameTf",
-				"text":"12345678912",
+				"text":"18888888888",
 				"type":"do_TextField"
 			},
 			{
@@ -22,7 +22,7 @@
 				"y":"553",
 				"fontSize":"30",
 				"id":"passWordTf",
-				"text":"password",
+				"text":"qqqqqq",
 				"type":"do_TextField"
 			},
 			{
