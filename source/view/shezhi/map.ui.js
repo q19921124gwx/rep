@@ -8,5 +8,9 @@ var page = sm("do_Page");
 var app = sm("do_App");
 
 
-var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"));
+page.on("back",function() {
+	app.closePage();
+});
+ui("back").on("touch",function() {
+	page.fire("back");
+});

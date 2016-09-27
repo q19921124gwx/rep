@@ -11,8 +11,13 @@ var carListCellData = mm("do_ListData");
 carListView.bindItems(carListCellData);
 var config = require("config");
 var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"),"myCarsMemory",carListDataArr);
+do_Page.on("back",function() {
+	uiTools.closeMethod("myCarsMemory",carListDataArr);
+});
 
+ui("back").on("touch",function() {
+	do_Page.fire("back");
+});
 //do_Page.on("back", function() {
 //		//返回时将当前的最新数据存入内存，以便再次进入界面时直接获取
 //		global.setMemory("myCarsMemory",carListDataArr);

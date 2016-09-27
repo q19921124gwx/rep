@@ -10,8 +10,12 @@ var submit = ui("layoutSubmit");
 var nf = sm("do_Notification");
 var content = ui("textboxContent");
 
-var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"));
+page.on("back",function() {
+	app.closePage();
+});
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 
 
 

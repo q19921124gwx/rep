@@ -6,21 +6,32 @@
  */
 var page = sm("do_Page");
 var app = sm("do_App");
-var recsListView = ui("listView");
-var recsListData = mm("do_ListData");
+var expandableListView = ui("expandableListView");
 var recsDataArr;
 var nf = sm("do_Notification");
 var config = require("config");
 var global = sm("do_Global");
-recsListView.bindItems(recsListData);
+var childArr;
+var groupListData = mm("do_ListData");
+var childListData = mm("do_ListData");
+expandableListView.bindItems(groupListData,childListData);
 
 var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"),"recsMemory",recsDataArr);
+var jsonTools = require("jsonTools");
+
+page.on("back",function() {
+	uiTools.closeMethod("recsMemory",recsDataArr,"childMemory",childArr);
+});
+
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 
 page.on("loaded",function() {
 	recsDataArr = global.getMemory("recsMemory");
+	childArr = global.getMemory("childMemory");
 	//如果将停车记录全部删除之后再次进入，JSON.stringify(recsDataArr) == "[{}]"，
-	//会出现一个没有停车记录的recsListView的Cell
+	//会出现一个没有停车记录的expandableListView的Cell
 	if(JSON.stringify(recsDataArr) == "[{}]") {
 		
 	}
@@ -31,8 +42,9 @@ page.on("loaded",function() {
 		}
 		//表明不是第一次进入，且没有删除所有的停车记录，可以从内存读取停车记录的数据
 		else {
-			recsListData.addData(recsDataArr);
-			recsListView.refreshItems();
+			groupListData.addData(recsDataArr);
+			childListData.addData(childArr);
+			expandableListView.refreshItems();
 		}
 	}
 });
@@ -40,6 +52,7 @@ page.on("loaded",function() {
 function getrecsDataOnLoaded() {
 	//先把字符串定义为一个空数组，避免下面addData的时候报错
 	recsDataArr = [{}];
+	childArr = [[{}]];
 	var http = mm("do_Http");
 	http.timeout = 3000;
 	http.method = "post";
@@ -53,13 +66,17 @@ function getrecsDataOnLoaded() {
 			if(data.SUCCESS == 003) {
 				//如果保存停车记录数据的数组没有元素，recsDataArr已经为[{}];不用做任何操作
 			}
-			//如果保存停车记录数据的数组本来有元素，就将其从服务器获取后后显示在下面的recsListView中
+			//如果保存停车记录数据的数组本来有元素，就将其从服务器获取后后显示在下面的expandableListView中
 			else {
 				if(data.SUCCESS == 000){
 					recsDataArr = data.data;
-					recsListData.removeAll();
-					recsListData.addData(recsDataArr);
-					recsListView.refreshItems();
+					groupListData.removeAll();
+					groupListData.addData(recsDataArr);
+					childListData.removeAll();
+					childArr = child(recsDataArr);
+//					child(recsDataArr);
+					childListData.addData(childArr);
+					expandableListView.refreshItems();
 				}
 				else {
 					nf.toast("网络异常，请您稍后重试");
@@ -75,4 +92,22 @@ function getrecsDataOnLoaded() {
 	http.request();
 }
 
+function child(groupArr) {
+	    var arr = new Array; 
+		//trans 表示  \"的转义形式
+		var childArrItemObj = {
+				recordid : "",
+				userid : "",
+				recordcon : ""
+		};
+		for(var i = 0;i < groupArr.length;i++) {
+			var obj = [{
+				recordid: groupArr[i].recordid,
+				userid : groupArr[i].userid,
+				recordcon: groupArr[i].recordcon
+			}];
+			arr[i] = obj;
+		}
+		return arr;
+}
 

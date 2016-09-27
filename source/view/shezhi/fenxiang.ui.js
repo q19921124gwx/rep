@@ -10,8 +10,12 @@ var layoutFenxiang = ui("layoutFenxiang");
 var share = sm("M0011_share");
 
 
-var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"));
+page.on("back",function() {
+	app.closePage();
+});
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 
 layoutFenxiang.on("touch",function() {
 	share.share({

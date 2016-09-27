@@ -1,7 +1,7 @@
 var nf = sm("do_Notification");
 var do_App = sm("do_App");
 var global =sm("do_Global");
-var do_Page =sm("do_Page");
+var page =sm("do_Page");
 var config = require("config");
 var layoutNone = ui("layoutNone");
 //声明UI组件
@@ -10,10 +10,15 @@ var couponsListData = mm("do_ListData");
 var couponsListView = ui("couponListView");
 couponsListView.bindItems(couponsListData);
 var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"),"mycouponsMemory",couponsDataArr);
+page.on("back",function() {
+	uiTools.closeMethod("mycouponsMemory",couponsDataArr);
+});
 
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 
-do_Page.on("loaded",function() {
+page.on("loaded",function() {
 	couponsDataArr = global.getMemory("mycouponsMemory");
 	//如果将停车券全部删除之后再次进入，JSON.stringify(couponsDataArr) == "[{}]"，
 	//会出现一个空的couponsListView的Cell
@@ -88,7 +93,7 @@ function getcouponsDataOnLoaded() {
 	http.request();
 }
 
-do_Page.on("del",function(data) {
+page.on("del",function(data) {
 	var couponId = data;
 	var http2 = mm("do_Http");
 	http2.method = "post";

@@ -1,5 +1,5 @@
 var do_App = sm("do_App");
-var do_Page =sm("do_Page");
+var page =sm("do_Page");
 var msgsListView = ui("msgListView");
 var httpBody;
 var msgsDataArr;
@@ -17,14 +17,20 @@ var nf = sm("do_Notification");
 //})
 
 // 监听android 的返回按钮;
-//do_Page.on("back", function() {
+//page.on("back", function() {
 //	global.setMemory("myMsgsMemory",msgsDataArr);
 //	do_App.closePage()
 //});
 var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"),"myMsgsMemory",msgsDataArr);
+page.on("back",function() {
+	uiTools.closeMethod("myMsgsMemory",msgsDataArr);
+});
 
-do_Page.on("loaded",function() {
+ui("back").on("touch",function() {
+	page.fire("back");
+});
+
+page.on("loaded",function() {
 	msgsDataArr = global.getMemory("myMsgsMemory");
 	//如果将消息全部删除之后再次进入，JSON.stringify(msgsDataArr) == "[{}]"，
 	//会出现一个没有消息的msgsListView的Cell
@@ -89,7 +95,7 @@ function getMsgsDataOnLoaded() {
 	http.request();
 }
 
-do_Page.on("deleteAMsg",function(data) {
+page.on("deleteAMsg",function(data) {
 	var msgId = data;
 	var http2 = mm("do_Http");
 	http2.method = "post";

@@ -58,12 +58,13 @@
 				"height":"101"
 			},
 			{
-				"templates":"source://view/tingchejilu/detail.ui",
+				"childTemplate":"source://view/tingchejilu/childTemplate.ui",
 				"width":"750",
 				"y":"101",
-				"id":"listView",
-				"type":"do_ListView",
-				"height":"-1"
+				"groupTemplate":"source://view/tingchejilu/groupTemplate.ui",
+				"id":"expandableListView",
+				"type":"do_ExpandableListView",
+				"height":"1233"
 			}
 		],
 		"height":"1334"

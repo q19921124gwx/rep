@@ -1,5 +1,5 @@
-var do_App = sm("do_App");
-var do_Page =sm("do_Page");
+var app = sm("do_App");
+var page =sm("do_Page");
 var listView = ui("listView");
 //声明UI组件
 var data = [
@@ -47,5 +47,9 @@ listView.bindItems(list);
 //返回按钮的返回事件
 
 // 监听android 的返回按钮;
-var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"));
+page.on("back",function() {
+	app.closePage();
+});
+ui("back").on("touch",function() {
+	page.fire("back");
+});

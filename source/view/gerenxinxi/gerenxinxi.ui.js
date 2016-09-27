@@ -19,7 +19,13 @@ var config = require("config");
 var info;
 var uiTools = require("uiTools");
 var portraitChangedFlag = false;
-uiTools.closeMethod(ui("back"),"userInfo",info);
+page.on("back",function() {
+	uiTools.closeMethod("userInfo",info);
+});
+
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 //判断是否至少有一条信息发生了变化
 var infoChangedFlag = false;
 var portraitImageView = ui("portraitImageView");

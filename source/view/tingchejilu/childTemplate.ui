@@ -1,0 +1,35 @@
+{
+	"RootView":{
+		"x":"0",
+		"width":"750",
+		"y":"0",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"width":"500",
+				"x":"250",
+				"fontSize":"40",
+				"id":"recConLabel",
+				"type":"do_Label"
+			},
+			{
+				"textAlign":"center",
+				"x":"25",
+				"width":"200",
+				"fontSize":"50",
+				"id":"do_Label_2",
+				"text":"内容",
+				"type":"do_Label"
+			},
+			{
+				"bgColor":"000000FF",
+				"width":"750",
+				"y":"99",
+				"id":"do_ALayout_1",
+				"type":"do_ALayout",
+				"height":"1"
+			}
+		],
+		"height":"100"
+	}
+}

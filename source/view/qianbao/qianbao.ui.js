@@ -1,7 +1,7 @@
 var nf = sm("do_Notification");
-var do_App = sm("do_App");
+var app = sm("do_App");
 var do_Global =sm("do_Global");
-var do_Page =sm("do_Page");
+var page =sm("do_Page");
 
 //声明UI组件
 var do_ALayout_yuechongzhi = ui("do_ALayout_yuechongzhi");
@@ -9,11 +9,15 @@ var do_ALayout_jifen = ui("do_ALayout_jifen");
 var do_ALayout_kuaijiezhifu = ui("do_ALayout_kuaijiezhifu");
 var do_ALayout_tingchequan = ui("do_ALayout_tingchequan");
 var do_ALayout_fapiao = ui("do_ALayout_fapiao");
-var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"));
+page.on("back",function() {
+	app.closePage();
+});
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 //余额支付
 do_ALayout_yuechongzhi.on("touch", function(data, e) {
-	do_App.openPage({
+	app.openPage({
 		source:"source://view/qianbao/yuechongzhi.ui",
 		animationType:"push_r21"
 	});
@@ -46,7 +50,7 @@ do_ALayout_kuaijiezhifu.on("touchUp", function(data, e){
 });
 //停车券
 do_ALayout_tingchequan.on("touch", function(data, e) {
-	do_App.openPage({
+	app.openPage({
 		source:"source://view/qianbao/tingchequan.ui",
 		animationType:"push_r21"
 	});
@@ -59,7 +63,7 @@ do_ALayout_tingchequan.on("touchUp", function(data, e){
 });
 //发票
 do_ALayout_fapiao.on("touch", function(data, e) {
-	do_App.openPage({
+	app.openPage({
 		source:"source://view/qianbao/fapiao.ui",
 		animationType:"push_r21"
 	});

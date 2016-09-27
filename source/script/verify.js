@@ -1,6 +1,8 @@
 /**
  * New DeviceOne File
  */
+//用于检测用户输入的信息 如登陆或者注册信息
+//是否符合规定
 var deviceone = require("deviceone");
 var nf = deviceone.sm("do_Notification");
 var reg = {

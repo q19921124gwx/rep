@@ -105,12 +105,6 @@ logButton.on("touch",function() {
 		http.request();
 	}
 	
-//	if(userName == "" || passWord == "") {
-//		nf.toast("用户名和密码不能为空");
-//	}
-//		else {
-			
-//		}
 	}
 );
 

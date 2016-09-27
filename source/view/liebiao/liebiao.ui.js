@@ -1,7 +1,7 @@
 var nf = sm("do_Notification");
-var do_App = sm("do_App");
+var app = sm("do_App");
 var do_Global =sm("do_Global");
-var do_Page =sm("do_Page");
+var page =sm("do_Page");
 
 //声明UI组件
 var do_ListView_2 = ui("do_ListView_2")
@@ -16,5 +16,9 @@ do_ListView_2.refreshItems();//listview刷新界面，显示数据
 //返回按钮的返回事件
 
 // 监听android 的返回按钮;
-var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"));
+page.on("back",function() {
+	app.closePage();
+});
+ui("back").on("touch",function() {
+	page.fire("back");
+});

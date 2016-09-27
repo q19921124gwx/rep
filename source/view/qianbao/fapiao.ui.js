@@ -1,7 +1,7 @@
 var nf = sm("do_Notification");
 var do_App = sm("do_App");
 var do_Global =sm("do_Global");
-var do_Page =sm("do_Page");
+var page =sm("do_Page");
 var do_External = sm("do_External");
 var config = require("config");
 var global = sm("do_Global");
@@ -12,8 +12,13 @@ fapiaosListView.bindItems(fapiaosListData);
 //声明UI组件
 var do_ALayout_bohao = ui("do_ALayout_bohao");
 var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"),"myfapiaosMemory",fapiaosDataArr);
+page.on("back",function() {
+	uiTools.closeMethod("myfapiaosMemory",fapiaosDataArr);
+});
 
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 
 //拨号
 do_ALayout_bohao.on("touch", function(data, e){
@@ -24,7 +29,7 @@ do_ALayout_bohao.on("touch", function(data, e){
 
 // 监听android 的返回按钮;
 
-do_Page.on("loaded",function() {
+page.on("loaded",function() {
 	fapiaosDataArr = global.getMemory("myfapiaosMemory");
 	//如果将发票全部删除之后再次进入，JSON.stringify(fapiaosDataArr) == "[{}]"，
 	//会出现一个没有发票的fapiaosListView的Cell

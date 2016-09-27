@@ -1,10 +1,14 @@
 var nf = sm("do_Notification");
-var do_App = sm("do_App");
+var app = sm("do_App");
 var do_Global =sm("do_Global");
-var do_Page =sm("do_Page");
+var page =sm("do_Page");
 var do_BaiduNavigate = sm("do_BaiduNavigate");
-var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"));
+page.on("back",function() {
+	app.closePage();
+});
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 //声明UI组件
 var do_Button_daohang = ui("do_Button_daohang");
 var do_Label_TCCname = ui("do_Label_TCCname");

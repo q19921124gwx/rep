@@ -9,8 +9,12 @@ var app = sm("do_App");
 var External = sm("do_External");
 var contact = ui("layoutContact");
 
-var uiTools = require("uiTools");
-uiTools.closeMethod(ui("back"));
+page.on("back",function() {
+	app.closePage();
+});
+ui("back").on("touch",function() {
+	page.fire("back");
+});
 
 contact.on("touch", function(data, e){
 	External.openDial(ui("labelPhoneNum").text);
